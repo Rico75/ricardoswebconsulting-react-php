@@ -96,5 +96,12 @@ license found in the [LICENSE.txt](https://github.com/kriasoft/react-starter-kit
 file. The documentation to the project is licensed under the
 [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/) license.
 
+### Notes
+
+To run site
+npm install
+npm run build
+npm start
+
 ---
 Made with ♥ by Konstantin Tarkus ([@koistya](https://twitter.com/koistya)) and [contributors](https://github.com/kriasoft/react-starter-kit/graphs/contributors)

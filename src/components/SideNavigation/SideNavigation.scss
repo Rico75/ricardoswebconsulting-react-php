@@ -1,8 +1,14 @@
 @import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../variables.scss';
+
+.root {
+
+}
 
 .nav {
   width:20%;
 }
+
 .nav-pills > li > a {
   border-radius: 0;
 }

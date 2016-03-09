@@ -4,6 +4,7 @@ import s from './App.scss';
 import Header from '../Header';
 import SideNavigation from '../SideNavigation';
 import HomeJumbotron from '../HomeJumbotron';
+import HomePanels from '../HomePanels';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
 
@@ -52,6 +53,7 @@ class App extends Component {
         <Header />
         <SideNavigation />
         <HomeJumbotron />
+        <HomePanels />
         {this.props.children}
         <Feedback />
         <Footer />

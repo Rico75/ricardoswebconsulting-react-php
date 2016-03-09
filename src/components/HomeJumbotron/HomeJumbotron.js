@@ -10,7 +10,7 @@ class HomeJumbotron extends Component {
     return (
 
       <div className={s['center-block']}>
-        <Jumbotron className={s['jumbotron']}>
+        <Jumbotron className={s.jumbotron}>
           <div className={s['jumbotron-content-center']}>
             <h1>Hello, world!</h1>
             <p>

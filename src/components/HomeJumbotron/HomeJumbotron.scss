@@ -1,5 +1,12 @@
 @import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../variables.scss';
 
 .jumbotron-content-center {
   text-align:center;
+}
+
+.center-block {
+  float: right;
+  margin-top: -208px;
+  width: 90%;
 }
