@@ -3,8 +3,6 @@ import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.scss';
 import Header from '../Header';
 import SideNavigation from '../SideNavigation';
-import HomeJumbotron from '../HomeJumbotron';
-import HomePanels from '../HomePanels';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
 
@@ -52,8 +50,7 @@ class App extends Component {
       <div>
         <Header />
         <SideNavigation />
-        <HomeJumbotron />
-        <HomePanels />
+        {console.log('this.props.children', this.props.children)};
         {this.props.children}
         <Feedback />
         <Footer />
