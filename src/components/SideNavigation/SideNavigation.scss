@@ -2,13 +2,15 @@
 @import '../variables.scss';
 
 .root {
+  .nav {
+    width:20%;
+  }
 
-}
+  .nav-pills > li > a {
+    border-radius: 0;
+  }
 
-.nav {
-  width:20%;
-}
-
-.nav-pills > li > a {
-  border-radius: 0;
+  a {
+    width:50%;
+  }
 }
