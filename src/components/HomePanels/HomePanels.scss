@@ -1,0 +1,40 @@
+@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../variables.scss';
+
+.root {
+  display: flex;
+  justify-content: center;
+  margin-left: 10%;
+  width: 90%;
+  align-content: stretch;
+  align-items: stretch;
+
+  .flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+  }
+
+  .flex-item {
+    background: #add8e6;
+    border: 1px solid;
+    color: white;
+    font-size: 1em;
+    height: auto;
+    margin: 0 20px;
+    padding: 15px;
+    text-align: center;
+    width: 450px;
+    border-radius: 15px;
+  }
+
+}
