@@ -1,10 +1,17 @@
 import React, { Component, PropTypes } from 'react';
+import { combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.scss';
 import Header from '../Header';
 import SideNavigation from '../SideNavigation';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
+import { createStore, renderDevTools } from '../../store_enhancers/devTools';
+import * as reducers from '../../reducers';
+
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
 
 class App extends Component {
 
@@ -50,8 +57,9 @@ class App extends Component {
       <div>
         <Header />
         <SideNavigation />
-        {console.log('this.props.children', this.props.children)};
-        {this.props.children}
+        <Provider store={store}>
+          {this.props.children}
+        </Provider>
         <Feedback />
         <Footer />
       </div>

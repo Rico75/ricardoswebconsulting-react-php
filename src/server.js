@@ -1,12 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import 'babel-polyfill';
 import path from 'path';
 import express from 'express';
@@ -22,6 +13,8 @@ import schema from './data/schema';
 import Router from './routes';
 import assets from './assets';
 import { port, auth, analytics } from './config';
+import twitter from 'twitter';
+import TweetModel from './models/Tweet';
 
 const server = global.server = express();
 
@@ -75,6 +68,36 @@ server.use('/graphql', expressGraphQL(req => ({
   pretty: process.env.NODE_ENV !== 'production',
 })));
 
+var router = express.Router();
+
+server.use('/api', router);
+  // res.json({ message: 'hooray! welcome to our api!' });
+  // res.setHeader('Content-Type', 'application/json');
+  // res.json({ message: 'hooray! welcome to our api!' });
+// });
+
+router.route('/TwitterAPI.php')
+  // create a bear (accessed at POST http://localhost:8080/api/bears)
+  .get(function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!' });
+    console.log('req: ', req);
+    console.log('res: ', res);
+
+    var tweetModel = new TweetModel();      // create a new instance of the Bear model
+    tweetModel.name = req.body.name;  // set the bears name (comes from the request)
+
+    // save the bear and check for errors
+    // twitterAPI.save(function(err) {
+    //   if (err)
+    //     res.send(err);
+    //
+    //   res.json({ message: 'twitterAPI created!' });
+    // });
+
+  });
+
+server.use('/api', router);
+
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
@@ -88,7 +111,7 @@ server.get('*', async (req, res, next) => {
       data.trackingId = analytics.google.trackingId;
     }
 
-    const css = [];
+    const css = []
     const context = {
       insertCss: styles => css.push(styles._getCss()),
       onSetTitle: value => (data.title = value),
@@ -133,3 +156,9 @@ server.listen(port, () => {
   /* eslint-disable no-console */
   console.log(`The server is running at http://localhost:${port}/`);
 });
+
+//
+// Twitter Fed
+// -----------------------------------------------------------------------------
+// Create a new ntwitter instance
+const twit = new twitter(auth.twitter);

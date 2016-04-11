@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Jumbotron, Button } from 'react-bootstrap';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './HomeJumbotron.scss';
-console.log('s: ', s);
+//console.log('s: ', s);
 
 class HomeJumbotron extends Component {
 

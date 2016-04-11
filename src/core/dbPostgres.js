@@ -1,18 +1,17 @@
-import db from 'promise-mysql';
+import db from 'pg';
 import Promise from 'bluebird';
-import { databaseUrl, databaseUser, databasePassword, database } from '../config';
-
-let connection;
+import { databaseUrl } from '../config';
 
 // TODO: Customize database connection settings
 /* jscs:disable requireCamelCaseOrUpperCaseIdentifiers */
-db.ssl = true;
-db.poolSize = 2;
-db.application_name = 'RSK';
+db.defaults.ssl = true;
+db.defaults.poolSize = 2;
+db.defaults.application_name = 'RSK';
 /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
 
 /**
- * Promise-based wrapper for mysql.Client
+ * Promise-based wrapper for pg.Client
+ * https://github.com/brianc/node-postgres/wiki/Client
  */
 function AsyncClient(client) {
   this.client = client;
@@ -47,17 +46,26 @@ AsyncClient.prototype.end = function end() {
 };
 
 /**
- * Promise-based wrapper for mysql.connect()
+ * Promise-based wrapper for pg.connect()
+ * https://github.com/brianc/node-postgres/wiki/pg
  */
 db.connect = (connect => callback => new Promise((resolve, reject) => {
-  connect.createConnection({
-    host: databaseUrl,
-    user: databaseUser,
-    password: databasePassword,
-    database: database
-  }).then(function(conn){
-    connection = conn;
-    console.log('Connected successfully');
+  connect.call(db, databaseUrl, (err, client, done) => {
+    if (err) {
+      if (client) {
+        done(client);
+      }
+
+      reject(err);
+    } else {
+      callback(new AsyncClient(client)).then(() => {
+        done();
+        resolve();
+      }).catch(error => {
+        done(client);
+        reject(error);
+      });
+    }
   });
 }))(db.connect);
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './SideNavigation.scss';
-console.log('side s: ', s);
+//console.log('side s: ', s);
 
 class SideNavigation extends Component {
 
