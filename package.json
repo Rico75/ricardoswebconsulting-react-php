@@ -24,7 +24,6 @@
     "history": "2.0.0",
     "isomorphic-style-loader": "0.0.10",
     "jade": "1.11.0",
-    "jsonwebtoken": "5.7.0",
     "less": "^2.6.1",
     "markdown-it": "6.0.0",
     "mongoose": "^4.4.12",
